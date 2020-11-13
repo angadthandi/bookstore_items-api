@@ -2,6 +2,7 @@ package app
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/gorilla/mux"
 )
@@ -14,8 +15,11 @@ func StartApplication() {
 	mapUrls()
 
 	serverConfig := &http.Server{
-		Handler: router,
-		Addr:    "127.0.0.1:8000",
+		Addr:         "127.0.0.1:8000",
+		WriteTimeout: 500 * time.Millisecond,
+		ReadTimeout:  2 * time.Second,
+		IdleTimeout:  2 * time.Second,
+		Handler:      router,
 	}
 
 	if err := serverConfig.ListenAndServe(); err != nil {
