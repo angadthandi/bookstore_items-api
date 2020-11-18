@@ -26,7 +26,7 @@ type itemsController struct{}
 func (c *itemsController) Create(w http.ResponseWriter, r *http.Request) {
 	if err := oauth.AuthenticateRequest(r); err != nil {
 		// TODO fix error
-		http_utils.RespondEror(w, rest_errors.RestErr{})
+		http_utils.RespondEror(w, nil)
 		return
 	}
 
@@ -35,14 +35,14 @@ func (c *itemsController) Create(w http.ResponseWriter, r *http.Request) {
 		respErr := rest_errors.NewUnauthorizedError(
 			"Cannot get Caller ID from Access Token",
 		)
-		http_utils.RespondEror(w, *respErr)
+		http_utils.RespondEror(w, respErr)
 		return
 	}
 
 	reqBody, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		respErr := rest_errors.NewBadRequestError("invalid request body")
-		http_utils.RespondEror(w, *respErr)
+		http_utils.RespondEror(w, respErr)
 		return
 	}
 	defer r.Body.Close()
@@ -50,7 +50,7 @@ func (c *itemsController) Create(w http.ResponseWriter, r *http.Request) {
 	var itemRequest items.Item
 	if err := json.Unmarshal(reqBody, &itemRequest); err != nil {
 		respErr := rest_errors.NewBadRequestError("invalid item json body")
-		http_utils.RespondEror(w, *respErr)
+		http_utils.RespondEror(w, respErr)
 		return
 	}
 
@@ -58,7 +58,7 @@ func (c *itemsController) Create(w http.ResponseWriter, r *http.Request) {
 
 	ret, createErr := services.ItemsService.Create(itemRequest)
 	if createErr != nil {
-		http_utils.RespondEror(w, *createErr)
+		http_utils.RespondEror(w, createErr)
 		return
 	}
 
