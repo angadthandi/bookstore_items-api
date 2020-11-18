@@ -5,7 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/angadthandi/bookstore_items-api/logger"
+	// "github.com/angadthandi/bookstore_items-api/logger"
+	"github.com/angadthandi/bookstore_utils-go/logger"
 	"github.com/olivere/elastic"
 )
 
@@ -23,6 +24,8 @@ type esClient struct {
 }
 
 func Init() {
+	log := logger.GetLogger()
+
 	client, err := elastic.NewClient(
 		elastic.SetURL("http://127.0.0.1:9200"),
 		// elastic.SetSniff(false),
@@ -30,7 +33,9 @@ func Init() {
 		// elastic.SetRetrier(NewCustomRetrier()),
 		// elastic.SetGzip(true),
 		// elastic.SetErrorLog(log.New(os.Stderr, "ELASTIC ", log.LstdFlags)),
+		elastic.SetErrorLog(log),
 		// elastic.SetInfoLog(log.New(os.Stdout, "", log.LstdFlags)),
+		elastic.SetInfoLog(log),
 		// elastic.SetHeaders(http.Header{
 		// 	"X-Caller-Id": []string{"..."},
 		// }),
