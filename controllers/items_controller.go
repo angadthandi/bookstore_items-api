@@ -4,12 +4,14 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"strings"
 
 	"github.com/angadthandi/bookstore_items-api/domain/items"
 	"github.com/angadthandi/bookstore_items-api/services"
 	"github.com/angadthandi/bookstore_items-api/utils/http_utils"
 	"github.com/angadthandi/bookstore_oauth-go/oauth"
 	"github.com/angadthandi/bookstore_utils-go/rest_errors"
+	"github.com/gorilla/mux"
 )
 
 var (
@@ -26,7 +28,7 @@ type itemsController struct{}
 func (c *itemsController) Create(w http.ResponseWriter, r *http.Request) {
 	if err := oauth.AuthenticateRequest(r); err != nil {
 		// TODO fix error
-		http_utils.RespondEror(w, nil)
+		http_utils.RespondEror(w, err)
 		return
 	}
 
@@ -66,5 +68,14 @@ func (c *itemsController) Create(w http.ResponseWriter, r *http.Request) {
 }
 
 func (c *itemsController) Get(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	itemID := strings.TrimSpace(vars["id"])
 
+	ret, err := services.ItemsService.Get(itemID)
+	if err != nil {
+		http_utils.RespondEror(w, err)
+		return
+	}
+
+	http_utils.RespondJson(w, http.StatusOK, ret)
 }
