@@ -6,11 +6,11 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/angadthandi/bookstore_items-api/domain/queries"
+	"github.com/angadthandi/bookstore_items-api/src/domain/queries"
 
-	"github.com/angadthandi/bookstore_items-api/domain/items"
-	"github.com/angadthandi/bookstore_items-api/services"
-	"github.com/angadthandi/bookstore_items-api/utils/http_utils"
+	"github.com/angadthandi/bookstore_items-api/src/domain/items"
+	"github.com/angadthandi/bookstore_items-api/src/services"
+	"github.com/angadthandi/bookstore_items-api/src/utils/http_utils"
 	"github.com/angadthandi/bookstore_oauth-go/oauth"
 	"github.com/angadthandi/bookstore_utils-go/rest_errors"
 	"github.com/gorilla/mux"

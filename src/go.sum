@@ -1,6 +1,6 @@
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
-github.com/angadthandi/bookstore_oauth-go v0.0.0-20201119022956-8b643501f72a h1:Bibs1oDAb+PtbLnt0wQiuHYj5mG7mHVzcM36vRLP2Jo=
-github.com/angadthandi/bookstore_oauth-go v0.0.0-20201119022956-8b643501f72a/go.mod h1:p5JcqS1v5pR8uS62XpIhoAp84BnHqbELPA93tzb0mH8=
+github.com/angadthandi/bookstore_oauth-go v0.0.0-20201120055719-c00ccfd0be32 h1:aNZ5LY9N195zvpCAp0XOKLrR2yI3rAhlN7jRZnRvePo=
+github.com/angadthandi/bookstore_oauth-go v0.0.0-20201120055719-c00ccfd0be32/go.mod h1:QupgW2gy3+/AeshVnXlNC5By4S1IKXO+ui4AbsGo4mQ=
 github.com/angadthandi/bookstore_utils-go v0.0.0-20201118050715-8e931d80e80b/go.mod h1:mnRKcPRfpTZorzKB+xHnfheu68ZmJcoGMsfFSVWmbNc=
 github.com/angadthandi/bookstore_utils-go v0.0.0-20201119021724-f45b1cc55472 h1:hQvG+7gqZP7LBuoOZx2/pnQNuEGxKGgz4c1z4Dr2ujQ=
 github.com/angadthandi/bookstore_utils-go v0.0.0-20201119021724-f45b1cc55472/go.mod h1:uQmU+151Y2MeU49iDwWrXwEsf4Ldi6IZDalrJgQcjA8=

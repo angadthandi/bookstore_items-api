@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/angadthandi/bookstore_items-api/domain/queries"
+	"github.com/angadthandi/bookstore_items-api/src/domain/queries"
 
-	"github.com/angadthandi/bookstore_items-api/clients/elasticsearch"
+	"github.com/angadthandi/bookstore_items-api/src/clients/elasticsearch"
 	"github.com/angadthandi/bookstore_utils-go/rest_errors"
 )
 

@@ -30,6 +30,9 @@ func Init() {
 
 	client, err := elastic.NewClient(
 		elastic.SetURL("http://127.0.0.1:9200"),
+		// elastic.SetURL("http://0.0.0.0:9200"),
+		elastic.SetHealthcheckInterval(10*time.Second),
+		elastic.SetSniff(false),
 		// elastic.SetSniff(false),
 		elastic.SetHealthcheckInterval(10*time.Second),
 		// elastic.SetRetrier(NewCustomRetrier()),
@@ -42,6 +45,12 @@ func Init() {
 		// 	"X-Caller-Id": []string{"..."},
 		// }),
 	)
+
+	// TODO : can add a timeout and try the above conn in a loop
+	// that will give docker the chance to create network connection
+	// in 2 containers & maybe we can connect this service to ES
+	// within docker containers
+
 	if err != nil {
 		panic(err)
 	}
